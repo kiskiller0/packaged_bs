@@ -1,0 +1,404 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+/* this fixes the extra scroll because of hiding popups using top: 100% */
+body {
+	/* border: 4px solid magenta; */
+	overflow: hidden;
+}
+
+.page {
+	display: flex;
+	height: 100vh;
+	flex-direction: column;
+	/* border: 5px solid black; */
+	align-items: center;
+	gap: 1em;
+}
+
+#topbar {
+	padding: 4px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 80%;
+	border: 1px solid black;
+	border-radius: 0 0 15px 15px;
+}
+
+.search {
+	width: 70%;
+	border: 1px solid black;
+	border-radius: 25px;
+	height: 40px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	position: relative;
+	overflow: hidden;
+}
+
+.search > .bar,
+.search input {
+	position: absolute;
+}
+
+.search > input {
+	outline: none;
+	background-color: transparent;
+	border: none;
+	width: calc(100% - 30px);
+	height: 30px;
+	margin-left: 30px;
+}
+
+.search > .bar {
+	width: 30px;
+	z-index: 2;
+	display: flex;
+	justify-content: center;
+}
+
+.bar {
+	display: flex;
+	align-items: center;
+}
+
+input:focus {
+	outline: none;
+}
+
+.bar i {
+	cursor: pointer;
+}
+
+#functions {
+	display: flex;
+	justify-content: space-around;
+	min-width: 40px;
+	margin-left: 0.5em;
+}
+
+.home {
+	min-width: 40px;
+}
+
+.realContent,
+#content > div {
+	min-height: 101%;
+	height: fit-content;
+	width: 100%;
+	background-color: antiquewhite;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.realContent2 a,
+.realContent3 a {
+	text-decoration: none;
+	color: unset;
+}
+
+#content > div.hidden {
+	display: none;
+}
+
+#footer {
+	width: 80%;
+	min-height: 30px;
+	height: 30px;
+	border: 1px solid black;
+	border-radius: 15px 15px 0 0;
+	display: flex;
+	justify-content: center;
+	position: relative;
+}
+
+.clickable {
+	cursor: pointer;
+	padding: 0.3em;
+}
+
+#footer {
+}
+
+.functionTrigger {
+	width: 60px;
+	display: flex;
+	justify-content: center;
+}
+
+#footer i {
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+}
+
+#footer .fa-plus {
+	transform: translate(80%, -100%) scale(0.5);
+}
+
+/*.blog, #parameters {*/
+.popup {
+	position: absolute;
+	width: 70%;
+	height: 500px;
+	border: 1px solid black;
+	top: 50%;
+	transform: translate(0, -50%);
+	display: flex;
+	flex-direction: column;
+	transition: 0.5s all ease-in-out;
+	z-index: 3;
+}
+
+.popup#parameters.hidden {
+	transform: translate(1000px, -1000px);
+}
+
+#add_place textarea {
+	flex-grow: 1;
+}
+
+/* this is supposedly the calculations intensive way, that triggers recalculating layout: */
+.popup.hidden,
+.popup_background.hidden {
+	visibility: hidden;
+	width: 0;
+	height: 0;
+	opacity: 0;
+	background: none;
+}
+
+.popup.hidden {
+	top: 100%;
+}
+
+.popup .controls {
+	display: flex;
+	justify-content: flex-end;
+	background: linear-gradient(45deg, grey, white);
+}
+
+.popup .controls i {
+	padding: 0.3em;
+}
+
+/* end of popup styling */
+/*.blog .blog_content {*/
+/* TODO */
+.content {
+	/*.blog_content {*/
+	border: 1px solid black;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	backdrop-filter: blur(20px);
+}
+
+.parameters_content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.content form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex-grow: 1;
+	height: 100%;
+}
+
+.content textarea {
+	min-width: 100%;
+	max-width: 100%;
+	resize: none;
+	flex-grow: 1;
+}
+
+.content .file {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 70px;
+	width: 100%;
+}
+
+.content .file * {
+	position: absolute;
+	width: 80px;
+}
+
+.content .file i {
+	z-index: -1;
+	text-align: center;
+	font-size: 60px;
+}
+
+.content .file input {
+	opacity: 0;
+}
+
+.content input[type="submit"] {
+	padding: 0.2em;
+	margin: 1em;
+	width: 70px;
+	border-radius: 9px;
+}
+
+.popup_background {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	transform: scale(1.1);
+	backdrop-filter: blur(5px);
+	z-index: 2;
+	transition: 0.3s all ease-in-out;
+}
+
+/* styling fetched posts: */
+
+.post {
+	width: 400px;
+	min-height: 350px;
+	display: flex;
+	overflow: hidden;
+	flex-direction: column;
+	/*border: 1px solid black;*/
+	margin: 0.4em;
+	animation: 0.6s arrive ease-in-out;
+	transition: all 0.1s ease-in-out;
+	background-color: inherit;
+}
+
+.post:hover {
+	box-shadow: 0 0 13px 1px black;
+	cursor: pointer;
+	transform: scale(1.1);
+	z-index: 5;
+	border-radius: 15px;
+}
+
+.post > img {
+	max-width: 340px;
+	max-height: 200px;
+	margin: auto;
+	overflow: auto;
+	/* max-height: 240px; */
+}
+
+.postDate {
+	border: 1px solid black;
+	width: fit-content;
+	margin: 1em;
+	margin-left: auto;
+}
+
+.postContent {
+	margin: 1em 0.4em;
+	max-height: 50px;
+}
+
+.userDiv {
+	display: flex;
+	align-items: center;
+	gap: 1em;
+	min-height: 60px;
+	border: 1px solid black;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.userImg {
+	width: 50px;
+	min-height: 50px;
+	clip-path: circle(50%);
+	margin: 0.3em;
+}
+
+@keyframes arrive {
+	0% {
+		opacity: 0%;
+		transform: scale(0.1, 0.1);
+	}
+
+	100% {
+		opacity: 100%;
+		transform: none;
+	}
+}
+
+.page,
+.realContent {
+	transition: 1s all ease-in-out;
+}
+
+.page.darkmode {
+	background-color: #444444;
+	color: white;
+}
+
+.page.darkmode .realContent {
+	background-color: #444444;
+	color: white;
+}
+
+.darkmode #topbar {
+	border: 1px solid white;
+}
+
+.darkmode .search {
+	border: 1px solid white;
+}
+
+.darkmode .userDiv,
+.darkmode .postDate {
+	border: 1px solid white;
+}
+
+.darkmode .controls {
+	color: black;
+}
+
+.darkmode .content {
+	color: black;
+}
+
+.realContent a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.logout * {
+	font-family: Amiri;
+	font-size: 2em;
+	color: black;
+	text-decoration: none;
+}
+
+.logout a {
+	border: 1px solid white;
+	cursor: pointer;
+	padding: 0.3em;
+	color: white;
+}
+
+#content {
+	width: 80%;
+	flex-grow: 3;
+	border: 1px solid black;
+	border-radius: 15px;
+	display: flex;
+	overflow: auto;
+	flex-wrap: nowrap;
+}
+
+.page.darkmode #content div {
+	background-color: #444444;
+}

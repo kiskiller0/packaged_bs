@@ -1,0 +1,154 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-items: center;
+    margin: auto;
+}
+
+.post {
+    width: 100%;
+    min-height: 350px;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    /*border: 1px solid black;*/
+    margin: .4em;
+    animation: .6s arrive ease-in-out;
+    /*margin: auto;*/
+}
+
+.post > img {
+    max-width: 80%;
+    /*max-height: 200px;*/
+    margin: auto;
+    overflow: auto;
+    /* max-height: 240px; */
+}
+
+
+.postDate {
+    border: 1px solid black;
+    width: fit-content;
+    margin: 1em;
+    margin-left: auto;
+}
+
+.postContent {
+    margin: 1em .4em;
+    max-height: 50px;
+}
+
+.userDiv {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 1em;
+    min-height: 60px;
+    border: 1px solid black;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.userImg img {
+    width: 50px;
+    height: 50px;
+    /*min-height: 50px;*/
+    clip-path: circle(50%);
+    margin: .3em;
+}
+
+.add_comment {
+    width: 100%;
+}
+
+.add_comment form {
+    /*border: 1px solid black;*/
+    height: 175px;
+    display: flex;
+    flex-direction: column;
+    margin: .4em;
+}
+
+form textarea {
+    max-height: 150px;
+    min-height: 150px;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+
+.comments {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.comment {
+    width: 90%;
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 1em;
+}
+
+.comment .date {
+    border: 1px solid black;
+    width: fit-content;
+}
+
+.comment .by {
+    width: 100%;
+    background-color: red;
+}
+
+.comment .content {
+    width: 100%;
+    margin-bottom: 1.5em;
+}
+
+.comment img {
+    /*margin-right: auto;*/
+    clip-path: circle(50%);
+    /*filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));*/
+}
+
+.userDiv {
+    display: flex;
+    background-color: antiquewhite;
+}
+
+.username {
+    color: blue;
+}
+
+.userDiv img {
+    width: 40px;
+}
+
+.by {
+    display: none;
+}
+
+.post a i {
+    font-size: 7em;
+    text-align: center;
+    text-decoration: none;
+}
+
+.post a {
+    text-align: center;
+}
+
+
+.post p {
+    font-size: 1.2em;
+}

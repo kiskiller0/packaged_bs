@@ -1,0 +1,12 @@
+FROM mariadb:latest
+
+COPY ./landscape-marker/models/db/db.sql /docker-entrypoint-initdb.d/
+
+
+
+
+
+
+
+
+

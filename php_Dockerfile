@@ -1,0 +1,23 @@
+FROM php:fpm
+
+
+WORKDIR /app
+
+COPY ./landscape-marker/* .
+COPY --chmod=777 ./landscape-marker/public ./public/public
+
+# fixing file permissions:
+# COPY ./scripts/chown.sh ./app/scripts/
+
+# RUN chmod +x ./scripts/chown.sh
+
+# RUN ./scripts/chown.sh
+
+# fixing file permissions:
+# RUN chmod 777 -R ./public/public/
+
+RUN docker-php-ext-install pdo pdo_mysql
+
+RUN pecl install xdebug && docker-php-ext-enable xdebug
+
+

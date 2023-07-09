@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  nginx:
+    container_name: server
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+      - ./landscape-marker:/app/public
+      - public:/app/public/public
+
+  php:
+    container_name: php_fpm
+    build: 
+      dockerfile: php_Dockerfile
+      context: .
+    volumes:
+      - ./landscape-marker:/app/public
+      - public:/app/public/public
+
+  mysql:
+    container_name: mysql
+    build: 
+      dockerfile: mysql_Dockerfile
+      context: .
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=1234
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+    ports:
+      - 3306:3306
+
+volumes:
+  mysql_data:
+  public:
+
